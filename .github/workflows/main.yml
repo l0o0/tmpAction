@@ -24,4 +24,5 @@ jobs:
         # The arguments for the `git add` command (see the paragraph below for more info)
         add: 'data/translators.json'
         message: 'Update translators.json'
+        push: true
       
