@@ -8,11 +8,11 @@ jobs:
     - name: 'Checkout codes'
       uses: actions/checkout@v1
     
-    - name: Git init
-      run: |
-        git config user.name "GitHub Actions Bot"
-        git config user.email "<>"
-        git clean -f  # Remove untrack file
+#     - name: Git init
+#       run: |
+#         git config user.name "GitHub Actions Bot"
+#         git config user.email "<>"
+#         git clean -f  # Remove untrack file
 
     - name: Update metadata
       id: update_metadata
