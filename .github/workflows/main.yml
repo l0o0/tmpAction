@@ -13,6 +13,7 @@ jobs:
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
         git clean -f  # Remove untrack file
+        git pull origin master
 
     - name: Update metadata
       id: update_metadata
