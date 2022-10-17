@@ -15,4 +15,5 @@ jobs:
     - name: commit changes
       run: |
         git add data/translators.json
-        git commit -m "update translator metadata "`date +'%Y-%m-%d %H:%M:%S'`
+        dateString=`date +'%Y-%m-%d %H:%M:%S'`
+        git commit -m "update translator metadata ${dateString}"
