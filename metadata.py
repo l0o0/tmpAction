@@ -29,4 +29,6 @@ try:
     os.system("git add data/translators.json")
     s="git commit -m 'Update metadata %s'" % datetime.now()
     print(s)
-#    os.system(s)
+    os.system(s)
+except:
+    print("Error")
