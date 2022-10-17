@@ -13,6 +13,7 @@ jobs:
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
         git clean -f  # Remove untrack file
+        git remote -v
           
     - name: Update metadata
       id: update_metadata
@@ -20,3 +21,5 @@ jobs:
         python metadata.py
     - name: cat file
       run: cat data/translators.json
+      
+      
