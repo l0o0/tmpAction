@@ -12,3 +12,7 @@ jobs:
       id: update_metadata
       run: |
         python metadata.py
+    - name: commit changes
+      run: |
+        git add data/translators.json
+        git commit -m `update translator metadata $(date +'%Y-%m-%d')`
