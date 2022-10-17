@@ -18,3 +18,5 @@ jobs:
       id: update_metadata
       run: |
         python metadata.py
+    - name: cat file
+      run: cat data/translators.json
