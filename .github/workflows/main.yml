@@ -1,0 +1,14 @@
+name: Auto update translator metadata
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # copy git 仓库到虚拟机上
+    - name: 'Checkout codes'
+      uses: actions/checkout@v1
+    # 获取最新一条提交的git log  
+    - name: Update metadata
+      id: update_metadata
+      run: |
+        python metadata.py
