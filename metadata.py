@@ -1,6 +1,8 @@
 import json
 import os
 
+from datetime import datetime
+
 
 def read_metadata(filename):
     with open(filename, encoding='utf-8') as handle:
@@ -21,3 +23,8 @@ for t in translators:
 with open("data/translators.json", 'w', encoding='utf-8') as handle:
     print(translator_metadata)
     json.dump(translator_metadata, handle)
+
+
+try:
+    os.system("git add data/translators.json")
+    os.system("git commit -m 'Update metadata %s' % datetime.now())
