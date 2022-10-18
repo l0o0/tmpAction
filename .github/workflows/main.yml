@@ -34,6 +34,7 @@ jobs:
         echo ${remote_addr}
         git add data/translators.json
         git commit -m 'update translator metadata'
+        git remote remove origin
         git remote add origin ${remote_addr}
         git push origin master
 
