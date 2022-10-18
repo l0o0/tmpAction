@@ -36,7 +36,7 @@ jobs:
         git commit -m 'update translator metadata'
         git remote remove origin
         git remote add origin ${remote_addr}
-        git push origin master
+        git push origin HEAD:master
 
 
 
