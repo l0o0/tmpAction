@@ -48,6 +48,7 @@ jobs:
         user_org=`echo $remote_addr|  awk -F'/' '{print $4}'`
         repo=`echo $remote_addr|  awk -F'/' '{print $5}'`
         remote_addr=git@${domain}:${user_org}/${repo}.git
+        git remote remove origin
         git remote add origin ${remote_addr}
         
         git add data/translators.json
