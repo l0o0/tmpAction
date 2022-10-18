@@ -24,12 +24,13 @@ jobs:
     - name: check update
       id: modified
       run: |
-        git status | grep "data/translators.json" | wc -l
+        counts=`git status | grep "data/translators.json" | wc -l`
+        echo "::set-output name=counts::${counts}"
 
     - name: Git status
       run: |
         git status
-        echo ${{ steps.modified.outputs }}
+        echo ${{ steps.modified.outputs.counts }}
         git add data/translators.json
         git commit -m 'update translator metadata'
         git push
