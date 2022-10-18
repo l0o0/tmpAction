@@ -11,6 +11,7 @@ def read_metadata(filename):
 
 translators = os.listdir("translators")
 translators = [t for t in translators if t.endswith('js') and t != 'RefWorks Tagged.js']
+translators = sorted(translators)
 
 translator_metadata = {}
 for t in translators:
