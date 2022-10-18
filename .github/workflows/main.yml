@@ -49,7 +49,6 @@ jobs:
         repo=`echo $remote_addr|  awk -F'/' '{print $5}'`
         remote_addr=git@${domain}:${user_org}/${repo}.git
         git remote add origin ${remote_addr}
-        git push origin HEAD:gh-pages --force
         
         git add data/translators.json
         git commit -m 'update translator metadata'
