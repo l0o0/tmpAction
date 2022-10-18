@@ -55,6 +55,7 @@ jobs:
         #git commit -m 'update translator metadata'
         #git push origin HEAD:master
         
+        git add data/translators.json
         git commit -m 'update translator metadata'
         git push
 
