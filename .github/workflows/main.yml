@@ -28,15 +28,34 @@ jobs:
     - name: Git status
       run: |
         git status
+        #remote_addr=`git remote get-url --push origin`
+        #remote_addr=`echo $remote_addr|  awk -F'://' '{print $2}'`
+        #remote_addr=https://${user_name}:${{ secrets.GITHUB_TOKEN }}@${remote_addr}
+        #echo ${remote_addr}
+        
+        #git remote remove origin
+        #git remote add origin ${remote_addr}
+        
+        #
+        SSHPATH="$HOME/.ssh"
+        rm -rf "$SSHPATH"
+        mkdir -p "$SSHPATH"
+        echo "${{ secrets.ACCESS_KEY }}" > "$SSHPATH/id_rsa"
+        chmod 600 "$SSHPATH/id_rsa"
+        sudo sh -c "echo StrictHostKeyChecking no >>/etc/ssh/ssh_config"
         remote_addr=`git remote get-url --push origin`
-        remote_addr=`echo $remote_addr|  awk -F'://' '{print $2}'`
-        remote_addr=https://${user_name}:${{ secrets.GITHUB_TOKEN }}@${remote_addr}
-        echo ${remote_addr}
+        domain=`echo $remote_addr|  awk -F'/' '{print $3}'`
+        user_org=`echo $remote_addr|  awk -F'/' '{print $4}'`
+        repo=`echo $remote_addr|  awk -F'/' '{print $5}'`
+        remote_addr=git@${domain}:${user_org}/${repo}.git
+        git remote add origin ${remote_addr}
+        git push origin HEAD:gh-pages --force
+        
         git add data/translators.json
         git commit -m 'update translator metadata'
-        git remote remove origin
-        git remote add origin ${remote_addr}
         git push origin HEAD:master
+
+
 
 
 
