@@ -23,15 +23,5 @@ for t in translators:
 
 with open("data/translators.json", 'w', encoding='utf-8') as handle:
     print(translator_metadata)
-    json.dump(translator_metadata, handle)
+    json.dump(translator_metadata, handle, ensure_ascii=False)
     
-# os.system("git add data/translators.json")
-# os.system("git commit -m 'Update metadata %s'" % datetime.now())
-# os.system("git push --set-upstream origin HEAD:master")
-
-# try:
-#     os.system("git add data/translators.json")
-#     os.system("git commit -m 'Update metadata %s'" % datetime.now())
-#     os.system("git push origin HEAD:master")
-# except:
-#     print("Error")
