@@ -36,11 +36,10 @@ jobs:
         git add data/translators.json
         git commit -m 'update translator metadata'
         git push
-    - uses: pixta-dev/repository-mirroring-action@v1
+    - uses: wearerequired/git-mirror-action@master #开源actions包
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       with:
-        target_repo_url:
-          git@gitcode.net:goonback/tmpAction.git
-        ssh_private_key:                              # <-- use 'secrets' to pass credential information.
-          ${{ secrets.SSH_PRIVATE_KEY }}
-        
+        source-repo: "git@github.com:l0o0/tmpAction.git" # github仓库地址
+        destination-repo: "git@gitcode.net:goonback/tmpAction.git" # gitee仓库地址
     
