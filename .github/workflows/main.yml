@@ -28,7 +28,7 @@ jobs:
         counts=`git status | grep "data/translators.json" | wc -l`
         echo "counts=${counts}" >> $GITHUB_ENV
 
-    - name: Git status
+    - name: Update and mirror
       if: env.counts == 1
       run: |
         git status
@@ -36,8 +36,11 @@ jobs:
         git add data/translators.json
         git commit -m 'update translator metadata'
         git push
-
-
-
-
-
+    - uses: pixta-dev/repository-mirroring-action@v1
+      with:
+        target_repo_url:
+          git@gitcode.net:goonback/tmpAction.git
+        ssh_private_key:                              # <-- use 'secrets' to pass credential information.
+          ${{ secrets.SSH_PRIVATE_KEY }}
+        
+    
