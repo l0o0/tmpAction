@@ -29,6 +29,7 @@ jobs:
         echo "counts=${counts}" >> $GITHUB_ENV
 
     - name: Git status
+      if: ${{ env.counts == 1 }}
       run: |
         git status
         echo ${{ env.counts }}
